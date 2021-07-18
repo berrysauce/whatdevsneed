@@ -1,7 +1,7 @@
 <div class="col" style="margin-top: 20px;">
     <div class="card" style="min-width: 325px;">
         <div class="card-body">
-            <div class="d-flex d-xxl-flex justify-content-center justify-content-xxl-center" style="height: 115px;"><img class="img-fluid" src="{{ imgurl }}" style="margin-bottom: 16px;margin-top: 16px;object-fit: cover;max-height: 80px;" loading="lazy" alt="{{ imgalt }}" /></div>
+            <div class="d-flex d-xxl-flex justify-content-center justify-content-xxl-center" style="height: 115px;"><img class="img-fluid" src="{{ imgurl }}" style="margin-bottom: 16px;margin-top: 16px;object-fit: contain;max-height: 80px;" loading="lazy" alt="{{ imgalt }}" /></div>
             <h6 class="text-primary card-subtitle mb-2" style="font-family: Inconsolata, monospace;font-size: 18px;"><br />{{ category }} {% autoescape false %} {{ staffpick }} {% endautoescape %}</h6>
             <p class="card-text" style="min-height: 150px;margin-bottom: 0px;">{{ description }}</p>
             <div class="row">
