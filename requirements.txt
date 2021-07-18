@@ -5,3 +5,4 @@ deta
 python-dotenv
 python-multipart
 requests
+aiofiles
