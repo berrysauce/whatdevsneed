@@ -55,6 +55,7 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
             "description": description,
             "link": link,
             "pricing": pricing,
+            "email": email,
             "show": False
         })
         return RedirectResponse(url="/add?show=success", status_code=status.HTTP_303_SEE_OTHER)
