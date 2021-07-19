@@ -23,7 +23,7 @@ def tools():
                 staffpick_html = """"""
             data = {
                 "imgurl": entry["img"],
-                "imgalt": entry["name"],
+                "name": entry["name"],
                 "category": entry["category"],
                 "staffpick": staffpick_html,
                 "description": entry["description"],
