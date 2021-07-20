@@ -28,7 +28,7 @@ def tools():
                 "staffpick": staffpick_html,
                 "description": entry["description"],
                 "link": entry["link"],
-                "sharelink": "https://twitter.com/intent/tweet?url=whatdevsneed.com&text={0}".format("I just found " + entry["name"] + " on"),
+                "sharelink": "https://twitter.com/intent/tweet?url=whatdevsneed.com&text={0}".format("I just found " + entry["link"] + " on"),
                 "pricing": entry["pricing"]
             }
             tools_html = tools_html + tools_html_template.render(data)
