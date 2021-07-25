@@ -22,11 +22,17 @@ tools = deta.Base("whatdevsneed-posts")
 templates = Jinja2Templates(directory="templates")
 
 app.mount("/assets", StaticFiles(directory="templates/assets"), name="assets")
+app.mount("/category/assets", StaticFiles(directory="templates/assets"), name="assets")
 
 
 @app.get("/", response_class=HTMLResponse)
 async def get_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools()})
+    return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools("all"), "categories": htmlgen.categories()})
+
+@app.get("/category/{tag}", response_class=HTMLResponse)
+async def get_category(request: Request, tag: str):
+    return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools(tag), "categories": htmlgen.categories()})
+    
 
 @app.get("/about", response_class=HTMLResponse)
 async def get_about(request: Request):
@@ -40,7 +46,7 @@ async def get_add(request: Request, show: Optional[str] = None):
         alert = htmlgen.alert("add-error")
     else:
         alert = """"""
-    return templates.TemplateResponse("add.html", {"request": request, "alert": alert})
+    return templates.TemplateResponse("add.html", {"request": request, "alert": alert, "options": htmlgen.category_options()})
 
 @app.post("/add/submit")
 async def post_add_submit(name: str = Form(...), category: str = Form(...), description: str = Form(...), image: UploadFile = File(...), link: str = Form(...), pricing: str = Form(...), email: str = Form(...)):
@@ -62,6 +68,7 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
     except:
         return RedirectResponse(url="/add?show=error", status_code=status.HTTP_303_SEE_OTHER)
 
+
 @app.exception_handler(StarletteHTTPException)
 async def my_custom_exception_handler(request: Request, exc: StarletteHTTPException):
     if exc.status_code == 404:
@@ -70,7 +77,7 @@ async def my_custom_exception_handler(request: Request, exc: StarletteHTTPExcept
         return templates.TemplateResponse("error.html", {"request": request, "title": "500", "description": exc.detail})
     else:
         return templates.TemplateResponse('error.html', {"request": request, "title": "Error", "description": exc.detail})
-    
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=80)
