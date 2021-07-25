@@ -9,6 +9,7 @@ toolsdb = deta.Base("whatdevsneed-posts")
 
 all_categories = [
     {"name": "A/B Testing", "tag": "ab-testing", "color": "#f4b90a"},
+    {"name": "AIs", "tag": "ais", "color": "#f4b90a"},
     {"name": "Analytics", "tag": "analytics", "color": "#f4b90a"}, 
     {"name": "APIs", "tag": "apis", "color": "#f4b90a"}, 
     {"name": "Automation", "tag": "automation", "color": "#f4b90a"}, 
