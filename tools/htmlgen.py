@@ -1,3 +1,4 @@
+from dotenv.main import rewrite
 import jinja2
 from dotenv import load_dotenv
 from deta import Deta
@@ -50,17 +51,28 @@ all_categories = [
 def categorylist():
     return all_categories
 
+def search(query):
+    search = toolsdb.fetch({"show": True}).items
+    entries = []
+    for entry in search:
+        if query.lower() in str(entry["name"]).lower() or query.lower() in str(entry["description"]).lower() or query.lower() in str(entry["category"]).lower():
+            entries.append(entry)
+    return tools_html(entries)
+
 def tools(tag):
     if tag == "all":
-        entries = toolsdb.fetch({"show": True}).items
+        entries = toolsdb.fetch({"show": True}).items   
     else:
-        name = ""
-        for category in all_categories:
-            if tag == category["tag"]:
-                name = category["name"]
-                break
-        entries = toolsdb.fetch({"show": True, "category": name}).items
-    
+        entries = []
+        #name = ""
+        #for category in all_categories:
+        #    if tag == category["tag"]:
+        #        name = category["name"]
+        #        break
+        #entries = toolsdb.fetch({"show": True, "category": name}).items
+    return tools_html(entries)
+
+def tools_html(entries):
     if len(entries) == 0:
         tools_html = """<p>There's nothing here yet.</p>"""
     else:
@@ -84,7 +96,7 @@ def tools(tag):
             }
             tools_html = tools_html + tools_html_template.render(data)
     return tools_html
-        
+
 
 def alert(id):
     if id == "add-success":
@@ -93,11 +105,11 @@ def alert(id):
         alert = """<div role="alert" class="alert alert-danger" style="margin-bottom: 80px;max-width: 80%;margin-right: auto;margin-left: auto;"><span><strong>Error!</strong> The tool couldn&#39;t be added.</span></div>"""
     return alert
 
-def categories():
-    categories_html = """"""
-    for category in all_categories:
-        categories_html = categories_html + """<a class="btn btn-primary" role="button" style="padding-top: 0px;padding-bottom: 0px;padding-right: 5px;padding-left: 5px;background: rgba(13,110,253,0);border-radius: 10px;color: {0};margin-right: 10px;margin-bottom: 10px;border-width: 2px;border-color: {0};" href="https://whatdevsneed.com/category/{1}">{2}</a>""".format(category["color"], category["tag"], category["name"])
-    return categories_html
+#def categories():
+#    categories_html = """"""
+#    for category in all_categories:
+#        categories_html = categories_html + """<a class="btn btn-primary" role="button" style="padding-top: 0px;padding-bottom: 0px;padding-right: 5px;padding-left: 5px;background: rgba(13,110,253,0);border-radius: 10px;color: {0};margin-right: 10px;margin-bottom: 10px;border-width: 2px;border-color: {0};" href="https://whatdevsneed.com/category/{1}">{2}</a>""".format(category["color"], category["tag"], category["name"])
+#    return categories_html
 
 def category_options():
     options_html = """"""
