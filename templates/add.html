@@ -1,1 +1,70 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>whatdevsneed</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap"><link rel="stylesheet" href="assets/css/styles.min.css"></head><body><section class="highlight-clean"><div class="container" style="border-style: none;"><div class="intro"><p class="text-center" style="color: rgb(0,0,0);margin-top: 40px;margin-bottom: -15px;font-size: 20px;"><strong>this is...</strong></p><a href="/" style="color: rgba(255,255,255,0);"><h2 class="text-center" style="font-family: Inter, sans-serif;color: rgb(0,0,0);font-size: 60px;letter-spacing: -4px;line-height: 55px;margin-top: 15px;">what devs need</h2></a><p class="text-center" style="color: rgb(0,0,0);margin-top: -10px;">Discover developer tools to boost your workflow.<br>No ads. No cookies. No tracking. No popups. No signups.</p></div></div></section><section class="contact-clean" style="background: rgb(255,255,255);">{% autoescape false %} {{ alert }} {% endautoescape %}<form method="post" style="min-width: 80%;background: #f1f1f1;border-radius: 10px;margin-top: -50px;" enctype="multipart/form-data" action="/add/submit"><span class="badge bg-dark" style="margin-bottom: 8px;margin-top: 15px;">Your tool</span><input class="form-control" type="text" name="name" placeholder="Name of the tool" style="margin-bottom: 10px;" required=""><select class="form-select" style="margin-bottom: 10px;" required="" name="category"><option value="A/B Testing">A/B Testing</option><option value="Analytics">Analytics</option><option value="APIs">APIs</option><option value="Automation">Automation</option><option value="Backups">Backups</option><option value="Blockchain">Blockchain</option><option value="Blogging">Blogging</option><option value="Collaboration">Collaboration</option><option value="Continuous integrations">Continuous integrations</option><option value="Databases">Databases</option><option value="Design">Design</option><option value="Discussions">Discussions</option><option value="Domains">Domains</option><option value="Emails">Emails</option><option value="Extension">Extension</option><option value="Game Engine">Game Engine</option><option value="Hosting">Hosting</option><option value="IDEs" selected="">IDEs</option><option value="Issue Tracking">Issue Tracking</option><option value="Knowledgebases">Knowledgebases</option><option value="Learning">Learning</option><option value="Licensing">Licensing</option><option value="Localization">Localization</option><option value="Logging">Logging</option><option value="Monitoring">Monitoring</option><option value="Payments">Payments</option><option value="Performance">Performance</option><option value="Productivity">Productivity</option><option value="Publishing">Publishing</option><option value="Security">Security</option><option value="SMS">SMS</option><option value="Storage">Storage</option><option value="Terminals">Terminals</option><option value="Other">Other</option></select><textarea class="form-control" name="description" placeholder="Description" required="" maxlength="200" minlength="10" style="margin-bottom: 10px;"></textarea><p style="margin-bottom: 5px;">Logo</p><input class="form-control" type="file" style="margin-bottom: 10px;margin-top: 0px;" name="image" required="" accept="image/*"><input class="form-control" type="url" style="margin-bottom: 10px;" name="link" placeholder="Link to the tool" required=""><p style="margin-bottom: 10px;"><strong>Free</strong> - Completely free (no paid plans)<br><strong>Freemium</strong> - Offers completely free plans but also paid plans<br><strong>Paid</strong> - Does not offer free plans but only paid plans</p><select class="form-select" required="" name="pricing"><option value="Free" selected="">Free</option><option value="Freemium">Freemium</option><option value="Paid">Paid</option></select><span class="badge bg-dark" style="margin-bottom: 8px;margin-top: 25px;">Your information</span><p>I need this info to contact you in case I have any questions. Your email will be used for nothing other then contacting you about your submission.</p><input class="form-control" type="email" style="margin-bottom: 10px;" name="email" placeholder="Your email" required=""><div class="frc-captcha" data-sitekey="FCMT92HM4K5763EO"></div><div class="mb-3" style="margin-top: 45px;"><button class="btn" type="submit" style="margin-top: 0px;border-style: solid;border-radius: 5px;padding-top: 8px;padding-bottom: 8px;padding-left: 14px;padding-right: 14px;">Submit</button></div><p style="margin-top: -5px;font-size: 14px;">It might take up to 48h to review your submission. By clicking the "Submit" button you agree to the privacy policy.</p></form></section><footer class="footer-basic" style="margin-top: 35px;"><ul class="list-inline" style="font-size: 14px;"><li class="list-inline-item"><a href="/">Home</a></li><li class="list-inline-item"><a href="/about">About</a></li><li class="list-inline-item"><a href="/add">Add your tool</a></li><li class="list-inline-item"><a href="https://berrysauce.me/terms" target="_blank">Terms</a></li><li class="list-inline-item"><a href="https://berrysauce.me/privacy" target="_blank">Privacy</a></li></ul><p class="copyright">berrysauce © 2021</p></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <title>whatdevsneed</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900&amp;display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap" />
+        <link rel="stylesheet" href="assets/css/styles.min.css" />
+    </head>
+    <body>
+        <section class="highlight-clean">
+            <div class="container" style="border-style: none;">
+                <div class="intro">
+                    <p class="text-center" style="color: rgb(0, 0, 0); margin-top: 40px; margin-bottom: -15px; font-size: 20px;"><strong>this is...</strong></p>
+                    <a href="/" style="color: rgba(255, 255, 255, 0);">
+                        <h2 class="text-center" style="font-family: Inter, sans-serif; color: rgb(0, 0, 0); font-size: 60px; letter-spacing: -4px; line-height: 55px; margin-top: 15px;">what devs need</h2>
+                    </a>
+                    <p class="text-center" style="color: rgb(0, 0, 0); margin-top: -10px;">
+                        Discover developer tools to boost your workflow.<br />
+                        No ads. No cookies. No tracking. No popups. No signups.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="contact-clean" style="background: rgb(255, 255, 255);">
+            {% autoescape false %} {{ alert }} {% endautoescape %}
+            <form method="post" style="min-width: 80%; background: #f1f1f1; border-radius: 10px; margin-top: -50px;" enctype="multipart/form-data" action="/add/submit">
+                <span class="badge bg-dark" style="margin-bottom: 8px; margin-top: 15px;">Your tool</span><input class="form-control" type="text" name="name" placeholder="Name of the tool" style="margin-bottom: 10px;" required="" />
+                <select class="form-select" style="margin-bottom: 10px;" required="" name="category">
+                    {% autoescape false %} {{ options }} {% endautoescape %}
+                </select>
+                <textarea class="form-control" name="description" placeholder="Description" required="" maxlength="200" minlength="10" style="margin-bottom: 10px;"></textarea>
+                <p style="margin-bottom: 5px;">Logo</p>
+                <input class="form-control" type="file" style="margin-bottom: 10px; margin-top: 0px;" name="image" required="" accept="image/*" />
+                <input class="form-control" type="url" style="margin-bottom: 10px;" name="link" placeholder="Link to the tool" required="" />
+                <p style="margin-bottom: 10px;">
+                    <strong>Free</strong> - Completely free (no paid plans)<br />
+                    <strong>Freemium</strong> - Offers completely free plans but also paid plans<br />
+                    <strong>Paid</strong> - Does not offer free plans but only paid plans
+                </p>
+                <select class="form-select" required="" name="pricing">
+                    <option value="Free" selected="">Free</option>
+                    <option value="Freemium">Freemium</option>
+                    <option value="Paid">Paid</option>
+                </select>
+                <span class="badge bg-dark" style="margin-bottom: 8px; margin-top: 25px;">Your information</span>
+                <p>I need this info to contact you in case I have any questions. Your email will be used for nothing other then contacting you about your submission.</p>
+                <input class="form-control" type="email" style="margin-bottom: 10px;" name="email" placeholder="Your email" required="" />
+                <div class="frc-captcha" data-sitekey="FCMT92HM4K5763EO"></div>
+                <div class="mb-3" style="margin-top: 45px;">
+                    <button class="btn" type="submit" style="margin-top: 0px; border-style: solid; border-radius: 5px; padding-top: 8px; padding-bottom: 8px; padding-left: 14px; padding-right: 14px;">Submit</button>
+                </div>
+                <p style="margin-top: -5px; font-size: 14px;">It might take up to 48h to review your submission. By clicking the "Submit" button you agree to the privacy policy.</p>
+            </form>
+        </section>
+        <footer class="footer-basic" style="margin-top: 35px;">
+            <ul class="list-inline" style="font-size: 14px;">
+                <li class="list-inline-item"><a href="/">Home</a></li>
+                <li class="list-inline-item"><a href="/about">About</a></li>
+                <li class="list-inline-item"><a href="/add">Add your tool</a></li>
+                <li class="list-inline-item"><a href="https://berrysauce.me/terms" target="_blank">Terms</a></li>
+                <li class="list-inline-item"><a href="https://berrysauce.me/privacy" target="_blank">Privacy</a></li>
+            </ul>
+            <p class="copyright">berrysauce © 2021</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

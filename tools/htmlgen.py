@@ -64,12 +64,12 @@ def tools(tag):
         entries = toolsdb.fetch({"show": True}).items   
     else:
         entries = []
-        #name = ""
-        #for category in all_categories:
-        #    if tag == category["tag"]:
-        #        name = category["name"]
-        #        break
-        #entries = toolsdb.fetch({"show": True, "category": name}).items
+        name = ""
+        for category in all_categories:
+            if tag == category["tag"]:
+                name = category["name"]
+                break
+        entries = toolsdb.fetch({"show": True, "category": name}).items
     return tools_html(entries)
 
 def tools_html(entries):

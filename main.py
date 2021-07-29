@@ -31,9 +31,9 @@ async def get_root(request: Request, search: Optional[str] = None):
         return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.search(search)})
     return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools("all")})
 
-#@app.get("/category/{tag}", response_class=HTMLResponse)
-#async def get_category(request: Request, tag: str):
-#    return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools(tag), "categories": htmlgen.categories()})
+@app.get("/category/{tag}", response_class=HTMLResponse)
+async def get_category(request: Request, tag: str):
+    return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools(tag)})
 
 @app.get("/about", response_class=HTMLResponse)
 async def get_about(request: Request):
