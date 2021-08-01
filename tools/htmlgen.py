@@ -3,50 +3,16 @@ import jinja2
 from dotenv import load_dotenv
 from deta import Deta
 import os
+import urllib.parse
 
 load_dotenv()
 deta = Deta(os.getenv("DETA_TOKEN"))
 toolsdb = deta.Base("whatdevsneed-posts")
 
-all_categories = [
-    {"name": "A/B Testing", "tag": "ab-testing", "color": "#f4b90a"},
-    {"name": "AIs", "tag": "ais", "color": "#f4b90a"},
-    {"name": "Analytics", "tag": "analytics", "color": "#f4b90a"}, 
-    {"name": "APIs", "tag": "apis", "color": "#f4b90a"}, 
-    {"name": "Automation", "tag": "automation", "color": "#f4b90a"}, 
-    {"name": "Backups", "tag": "backups", "color": "#f4b90a"}, 
-    {"name": "Blockchain", "tag": "blockchain", "color": "#f4b90a"}, 
-    {"name": "Blogging", "tag": "blogging", "color": "#f4b90a"}, 
-    {"name": "Collaboration", "tag": "collaboration", "color": "#f4b90a"},
-    {"name": "Community", "tag": "community", "color": "#f4b90a"}, 
-    {"name": "Continuous Integrations", "tag": "continuous-integrations", "color": "#f4b90a"}, 
-    {"name": "Databases", "tag": "databases", "color": "#f4b90a"}, 
-    {"name": "Design", "tag": "design", "color": "#f4b90a"}, 
-    {"name": "Domains", "tag": "domains", "color": "#f4b90a"}, 
-    {"name": "Emails", "tag": "emails", "color": "#f4b90a"}, 
-    {"name": "Extensions", "tag": "extensions", "color": "#f4b90a"},
-    {"name": "Game Engines", "tag": "game-engines", "color": "#f4b90a"}, 
-    {"name": "Hosting", "tag": "hosting", "color": "#f4b90a"}, 
-    {"name": "IDEs", "tag": "ides", "color": "#f4b90a"}, 
-    {"name": "Issue Tracking", "tag": "issue-tracking", "color": "#f4b90a"}, 
-    {"name": "Documentation", "tag": "documentation", "color": "#f4b90a"}, 
-    {"name": "Learning", "tag": "learning", "color": "#f4b90a"}, 
-    {"name": "Legal", "tag": "legal", "color": "#f4b90a"}, 
-    {"name": "Libraries", "tag": "libraries", "color": "#f4b90a"}, 
-    {"name": "Licensing", "tag": "licensing", "color": "#f4b90a"},
-    {"name": "Localization", "tag": "localization", "color": "#f4b90a"},
-    {"name": "Logging", "tag": "logging", "color": "#f4b90a"},
-    {"name": "Messaging", "tag": "messaging", "color": "#f4b90a"},
-    {"name": "Monitoring", "tag": "monitoring", "color": "#f4b90a"},
-    {"name": "Payments", "tag": "payments", "color": "#f4b90a"},
-    {"name": "Performance", "tag": "performance", "color": "#f4b90a"},
-    {"name": "Productivity", "tag": "productivity", "color": "#f4b90a"},
-    {"name": "Publishing", "tag": "publishing", "color": "#f4b90a"},
-    {"name": "Security", "tag": "security", "color": "#f4b90a"},
-    {"name": "Storage", "tag": "storage", "color": "#f4b90a"}, 
-    {"name": "Terminals", "tag": "terminals", "color": "#f4b90a"}, 
-    {"name": "Other", "tag": "other", "color": "#f4b90a"}
-]
+all_categories = ["A/B Testing", "AIs", "Analytics", "APIs", "Automation", "Backups", "Blockchain", "Blogging", "Collaboration", "Community", 
+                  "Continuous Integrations", "Databases", "Design", "Domains", "Emails", "Extensions", "Game Engines", "Hosting", "IDEs", 
+                  "Issue Tracking", "Documentation", "Learning", "Legal", "Libraries", "Licensing", "Localization", "Logging", "Messaging", 
+                  "Monitoring", "Payments", "Performance", "Productivity", "Publishing", "Security", "Storage", "Terminals", "Other"]
 
 def categorylist():
     return all_categories
@@ -63,13 +29,7 @@ def tools(tag):
     if tag == "all":
         entries = toolsdb.fetch({"show": True}).items   
     else:
-        entries = []
-        name = ""
-        for category in all_categories:
-            if tag == category["tag"]:
-                name = category["name"]
-                break
-        entries = toolsdb.fetch({"show": True, "category": name}).items
+        entries = toolsdb.fetch({"show": True, "category": tag}).items
     return tools_html(entries)
 
 def tools_html(entries):
@@ -88,6 +48,7 @@ def tools_html(entries):
                 "imgurl": entry["img"],
                 "name": entry["name"],
                 "category": entry["category"],
+                "category_link": "/category/" + str(urllib.parse.quote(entry["category"])),
                 "staffpick": staffpick_html,
                 "description": entry["description"],
                 "link": entry["link"],
@@ -114,5 +75,5 @@ def alert(id):
 def category_options():
     options_html = """"""
     for category in all_categories:
-        options_html = options_html + """<option value="{0}">{0}</option>""".format(category["name"])
+        options_html = options_html + """<option value="{0}">{0}</option>""".format(category)
     return options_html
