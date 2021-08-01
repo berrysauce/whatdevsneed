@@ -1,4 +1,4 @@
-<h1 align="center">what devs need</h1>
+<h1 align="center">what devs need ❤👨‍💻</h1>
 <p align="center">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/berrysauce/whatdevsneed">
   <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/berrysauce/whatdevsneed">
