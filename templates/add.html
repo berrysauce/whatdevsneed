@@ -2,6 +2,15 @@
 <html lang="en">
     <head>
         <script async src="https://unpkg.com/thesemetrics@latest"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
+        <link rel="manifest" href="/assets/img/site.webmanifest" />
+        <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#f5ce01" />
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#ffc40d" />
+        <meta name="msapplication-config" content="/assets/img/browserconfig.xml" />
+        <meta name="theme-color" content="#ffffff" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <title>what devs need - Curated Developer Tools</title>
@@ -19,6 +28,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap" />
         <link rel="stylesheet" href="assets/css/styles.min.css" />
     </head>
+
     <body>
         <section class="highlight-clean">
             <div class="container" style="border-style: none;">
@@ -38,7 +48,7 @@
             {% autoescape false %} {{ alert }} {% endautoescape %}
             <form method="post" style="min-width: 80%; background: #f1f1f1; border-radius: 10px; margin-top: -50px;" enctype="multipart/form-data" action="/add/submit">
                 <span class="badge bg-dark" style="margin-bottom: 8px; margin-top: 15px;">Your tool</span><input class="form-control" type="text" name="name" placeholder="Name of the tool" style="margin-bottom: 10px;" required="" />
-                <select class="form-select" style="margin-bottom: 10px;" required="" name="category">
+                <select class="form-select" style="margin-bottom: 10px;" required name="category">
                     {% autoescape false %} {{ options }} {% endautoescape %}
                 </select>
                 <textarea class="form-control" name="description" placeholder="Description" required="" maxlength="200" minlength="10" style="margin-bottom: 10px;"></textarea>
