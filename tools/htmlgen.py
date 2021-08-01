@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from deta import Deta
 import os
 import urllib.parse
+import random
 
 load_dotenv()
 deta = Deta(os.getenv("DETA_TOKEN"))
@@ -36,6 +37,7 @@ def tools_html(entries):
     if len(entries) == 0:
         tools_html = """<p>There's nothing here yet.</p>"""
     else:
+        random.shuffle(entries)
         tools_html = """"""
         with open("templates/elements/tools.html", "r") as f:
             tools_html_template = jinja2.Template(f.read())
