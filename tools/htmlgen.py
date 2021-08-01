@@ -29,7 +29,7 @@ def tools(tag):
     if tag == "all":
         entries = toolsdb.fetch({"show": True}).items   
     else:
-        entries = toolsdb.fetch({"show": True, "category": tag}).items
+        entries = toolsdb.fetch({"show": True, "category": urllib.parse.unquote(tag)}).items
     return tools_html(entries)
 
 def tools_html(entries):
