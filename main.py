@@ -39,6 +39,10 @@ async def get_category(request: Request, tag: str):
 async def get_about(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
+@app.get("/help", response_class=HTMLResponse)
+async def get_about(request: Request):
+    return templates.TemplateResponse("help.html", {"request": request})
+
 @app.get("/add", response_class=HTMLResponse)
 async def get_add(request: Request, show: Optional[str] = None):
     if show == "success":
