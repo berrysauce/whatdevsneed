@@ -30,6 +30,25 @@
     </head>
 
     <body>
+        <!-- START OF BANNER - REMOVE AFTER PRODUCTHUNT LAUNCH -->
+        <div id="phbanner" class="container d-md-flex justify-content-md-center" style="min-width: 100%;height: 40px;padding-top: 8px;background: #f25022;">
+            <p style="margin-top: 0px;color: rgb(255,255,255);font-family: Inter, sans-serif;"><strong>whatdevsneed is live on ProductHunt! 🎉 </strong><a href="https://www.producthunt.com/posts/whatdevsneed" target="_blank" style="font-family: Inter, sans-serif;color: rgb(245,206,0);"><strong>Check it out</strong><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-right" style="font-size: 20px;margin-bottom: 5px;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <line x1="13" y1="18" x2="19" y2="12"></line>
+                        <line x1="13" y1="6" x2="19" y2="12"></line>
+                    </svg></a></p>
+        </div>
+        <script>
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            if (params["ref"] == "producthunt") {
+                const phbanner = document.getElementById("phbanner")
+                phbanner.remove();
+            };
+        </script>
+        <!-- END OF BANNER - REMOVE AFTER PRODUCTHUNT LAUNCH -->
+        
         <section class="highlight-clean">
             <div class="container" style="border-style: none;">
                 <div class="intro">
