@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/ZzY3vQn/github-banner-dark.png" alt="whatdevsneed-logo" border="0" width="400px">
+  <h1>what devs need</h1>
   <br>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/berrysauce/whatdevsneed">
   <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/berrysauce/whatdevsneed">
