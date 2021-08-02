@@ -6,3 +6,4 @@ python-dotenv
 python-multipart
 requests
 aiofiles
+sentry-sdk

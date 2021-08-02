@@ -12,6 +12,7 @@ import os
 import requests
 import base64
 import json
+import sentry_sdk
 
 
 load_dotenv()
@@ -23,6 +24,11 @@ templates = Jinja2Templates(directory="templates")
 
 app.mount("/assets", StaticFiles(directory="templates/assets"), name="assets")
 app.mount("/category/assets", StaticFiles(directory="templates/assets"), name="assets")
+
+sentry_sdk.init(
+    "https://78b74e6eaeef42388893a8cf0a4c332e@o309026.ingest.sentry.io/5889732",
+    traces_sample_rate=1.0
+)
 
 
 @app.get("/", response_class=HTMLResponse)
