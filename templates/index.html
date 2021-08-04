@@ -1,119 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <script async src="https://unpkg.com/thesemetrics@latest"></script>
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
-        <link rel="manifest" href="/assets/img/site.webmanifest" />
-        <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#f5ce01" />
-        <link rel="shortcut icon" href="/assets/img/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#ffc40d" />
-        <meta name="msapplication-config" content="/assets/img/browserconfig.xml" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-        <title>what devs need - Curated Developer Tools</title>
-        <meta property="og:image" content="https://whatdevsneed.com/assets/img/twitter-card.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools." />
-        <meta name="twitter:title" content="what devs need - Curated Developer Tools" />
-        <meta name="description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools." />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools." />
-        <meta property="og:title" content="what devs need - Curated Developer Tools" />
-        <meta name="twitter:image" content="https://whatdevsneed.com/assets/img/twitter-card.png" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900&amp;display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap" />
-        <link rel="stylesheet" href="assets/css/styles.min.css" />
-    </head>
-
-    <body>
-        <!-- START OF BANNER - REMOVE AFTER PRODUCTHUNT LAUNCH -->
-        <div id="phbanner" class="container d-md-flex justify-content-md-center" style="min-width: 100%; padding-top: 10px; padding-bottom: 15px;background: #f25022;">
-            <p style="margin-top: 0px;margin-bottom: -5px; color: rgb(255,255,255);font-family: Inter, sans-serif;"><strong>whatdevsneed is live on ProductHunt! 🎉 </strong><a href="https://www.producthunt.com/posts/whatdevsneed" target="_blank" style="font-family: Inter, sans-serif;color: rgb(245,206,0);"><strong>Check it out</strong><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-right" style="font-size: 20px;margin-bottom: 5px;">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <line x1="13" y1="18" x2="19" y2="12"></line>
-                        <line x1="13" y1="6" x2="19" y2="12"></line>
-                    </svg></a></p>
-        </div>
-        <script>
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlSearchParams.entries());
-            if (params["ref"] == "producthunt") {
-                const phbanner = document.getElementById("phbanner")
-                phbanner.remove();
-            };
-        </script>
-        <!-- END OF BANNER - REMOVE AFTER PRODUCTHUNT LAUNCH -->
-        
-        <section class="highlight-clean">
-            <div class="container" style="border-style: none;">
-                <div class="intro">
-                    <p class="text-center" style="color: rgb(0, 0, 0); margin-top: 40px; margin-bottom: -15px; font-size: 20px;"><strong>this is...</strong></p>
-                    <a href="/" style="color: rgba(255, 255, 255, 0);">
-                        <h2 class="text-center" style="font-family: Inter, sans-serif; color: rgb(0, 0, 0); font-size: 60px; letter-spacing: -4px; line-height: 55px; margin-top: 15px;">what devs need</h2>
-                    </a>
-                    <p class="text-center" style="color: rgb(0, 0, 0); margin-top: -10px;">
-                        Discover developer tools to boost your workflow.<br />
-                        No ads. No cookies. No tracking. No popups. No signups.
-                    </p>
-                </div>
-                <div class="intro">
-                    <form class="d-flex justify-content-center flex-wrap" method="get" style="margin-top: 60px;" enctype="application/x-www-form-urlencoded" action="/">
-                        <div class="mb-3">
-                            <input
-                                class="form-control"
-                                type="search"
-                                style="min-width: 250px; max-width: 350px; background: rgba(255, 255, 255, 0); border: 2px solid rgb(0, 0, 0); border-radius: 5px; color: rgb(0, 0, 0);"
-                                name="search"
-                                placeholder="Search"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-primary" type="submit" style="background: #000000; margin-left: 10px; padding-top: 5px; padding-bottom: 8px; border: 1px solid rgb(0, 0, 0); border-radius: 5px; min-height: 40px;">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="1em"
-                                    height="1em"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="2"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icon-tabler-search"
-                                    style="font-size: 20px; margin-bottom: 0px;"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="10" cy="10" r="7"></circle>
-                                    <line x1="21" y1="21" x2="15" y2="15"></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="d-flex d-xxl-flex justify-content-center justify-content-xxl-center intro">
-                    <a href="/add" style="color: rgb(0, 0, 0);"><strong>Or add your favourite tool</strong></a>
-                </div>
-            </div>
-        </section>
-        <section class="newsletter-subscribe">
-            <div class="container"><div class="row">{% autoescape false %} {{ tools }} {% endautoescape %}</div></div>
-        </section>
-        <footer class="footer-basic" style="margin-top: 35px;">
-            <ul class="list-inline" style="font-size: 14px;">
-                <li class="list-inline-item"><a href="/">Home</a></li>
-                <li class="list-inline-item"><a href="/about">About</a></li>
-                <li class="list-inline-item"><a href="/add">Add your tool</a></li>
-                <li class="list-inline-item"><a href="/help">Help</a></li>
-                <li class="list-inline-item"><a href="https://berrysauce.me/terms" target="_blank">Terms</a></li>
-                <li class="list-inline-item"><a href="https://berrysauce.me/privacy" target="_blank">Privacy</a></li>
-            </ul>
-            <p class="copyright">berrysauce © 2021</p>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+<!DOCTYPE html><html lang="en"><head>
+<script async defer data-website-id="1427d922-4af2-47a2-9bc1-404bf8fab1ea" src="https://analytics.brry.cc/umami.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="manifest" href="/assets/img/site.webmanifest">
+<link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#f5ce01">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="msapplication-config" content="/assets/img/browserconfig.xml">
+<meta name="theme-color" content="#ffffff"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>what devs need - Curated Developer Tools</title><meta property="og:image" content="https://whatdevsneed.com/assets/img/twitter-card.png"><meta property="og:type" content="website"><meta property="og:description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools."><meta name="twitter:title" content="what devs need - Curated Developer Tools"><meta name="description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Discover new developer tools to boost your workflow. No ads. No anoying popups. Just tools."><meta property="og:title" content="what devs need - Curated Developer Tools"><meta name="twitter:image" content="https://whatdevsneed.com/assets/img/twitter-card.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap"><link rel="stylesheet" href="assets/css/styles.min.css"></head><body><section class="highlight-clean"><div class="container" style="border-style: none;"><div class="intro"><p class="text-center" style="color: rgb(0,0,0);margin-top: 40px;margin-bottom: -15px;font-size: 20px;"><strong>this is...</strong></p><a href="/" style="color: rgba(255,255,255,0);"><h2 class="text-center" style="font-family: Inter, sans-serif;color: rgb(0,0,0);font-size: 60px;letter-spacing: -4px;line-height: 55px;margin-top: 15px;">what devs need</h2></a><p class="text-center" style="color: rgb(0,0,0);margin-top: -10px;">Discover developer tools to boost your workflow.<br>No ads. No cookies. No tracking. No popups. No signups.</p></div><div class="intro"><form class="d-flex justify-content-center flex-wrap" method="get" style="margin-top: 60px;" enctype="application/x-www-form-urlencoded" action="/"><div class="mb-3"><input class="form-control" type="search" style="min-width: 250px;max-width: 350px;background: rgba(255,255,255,0);border: 2px solid rgb(0,0,0);border-radius: 5px;color: rgb(0,0,0);" name="search" placeholder="Search"></div><div class="mb-3"><button class="btn btn-primary" type="submit" style="background: #000000;margin-left: 10px;padding-top: 5px;padding-bottom: 8px;border: 1px solid rgb(0,0,0);border-radius: 5px;min-height: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-search" style="font-size: 20px;margin-bottom: 0px;">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <circle cx="10" cy="10" r="7"></circle>
+  <line x1="21" y1="21" x2="15" y2="15"></line>
+</svg></button></div></form></div><div class="d-flex d-xxl-flex justify-content-center justify-content-xxl-center intro"><a href="/add" style="color: rgb(0,0,0);"><strong>Or add your favourite tool</strong></a></div></div></section><section class="newsletter-subscribe"><div class="container"><div class="row">{% autoescape false %} {{ tools }} {% endautoescape %}</div></div></section><footer class="footer-basic" style="margin-top: 35px;"><ul class="list-inline" style="font-size: 14px;"><li class="list-inline-item"><a href="/">Home</a></li><li class="list-inline-item"><a href="/about">About</a></li><li class="list-inline-item"><a href="/add">Add your tool</a></li><li class="list-inline-item"><a href="/help">Help</a></li><li class="list-inline-item"><a href="https://berrysauce.me/terms" target="_blank">Terms</a></li><li class="list-inline-item"><a href="https://berrysauce.me/privacy" target="_blank">Privacy</a></li></ul><p class="copyright">berrysauce © 2021</p></footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script></body></html>
