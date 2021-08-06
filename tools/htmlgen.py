@@ -10,10 +10,10 @@ load_dotenv()
 deta = Deta(os.getenv("DETA_TOKEN"))
 toolsdb = deta.Base("whatdevsneed-posts")
 
-all_categories = ["A/B Testing", "AIs", "Analytics", "APIs", "Automation", "Backups", "Blockchain", "Blogging", "Collaboration", "Community",
+all_categories = ["AIs", "Analytics", "APIs", "Automation", "Backups", "Blockchain", "Blogging", "Collaboration", "Community",
                   "Communication", "Continuous Integrations", "Databases", "Design", "Domains", "Emails", "Extensions", "Game Engines", "Hosting", "IDEs", 
                   "Issue Tracking", "Documentation", "Learning", "Legal", "Libraries", "Licensing", "Localization", "Logging", "Messaging", 
-                  "Monitoring", "Payments", "Performance", "Productivity", "Publishing", "Security", "Software", "Storage", "Terminals", "Other"]
+                  "Monitoring", "Payments", "Performance", "Productivity", "Publishing", "Security", "Software", "Storage", "Terminals", "Testing", "Other"]
 
 def categorylist():
     return all_categories
