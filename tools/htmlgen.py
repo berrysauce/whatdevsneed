@@ -53,7 +53,7 @@ def tools_html(entries):
                 "category_link": "/category/" + str(urllib.parse.quote(entry["category"])),
                 "staffpick": staffpick_html,
                 "description": entry["description"],
-                "link": entry["link"],
+                "link": entry["link"]+"?ref=whatdevsneed",
                 "sharelink": "https://twitter.com/intent/tweet?url=whatdevsneed.com&text={0}".format("I just found " + entry["link"] + " on"),
                 "pricing": entry["pricing"]
             }
