@@ -75,6 +75,10 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
             "email": email,
             "show": False
         })
+        api_key = os.getenv("PUSH_TOKEN")
+        title = "[wdn] New submission"
+        body = f"{name} ({category})"
+        r2 = requests.post(f"https://push.techulus.com/api/v1/notify/{api_key}?title={title}&body={body}")
         return RedirectResponse(url="/add?show=success", status_code=status.HTTP_303_SEE_OTHER)
     except:
         return RedirectResponse(url="/add?show=error", status_code=status.HTTP_303_SEE_OTHER)
