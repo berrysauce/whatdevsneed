@@ -10,9 +10,8 @@ from dotenv import load_dotenv
 from deta import Deta
 import os
 import requests
-import base64
-import json
-import sentry_sdk
+import boto3
+import uuid
 
 
 load_dotenv()
@@ -25,10 +24,16 @@ templates = Jinja2Templates(directory="templates")
 app.mount("/assets", StaticFiles(directory="templates/assets"), name="assets")
 app.mount("/category/assets", StaticFiles(directory="templates/assets"), name="assets")
 
-sentry_sdk.init(
-    "https://78b74e6eaeef42388893a8cf0a4c332e@o309026.ingest.sentry.io/5889732",
-    traces_sample_rate=1.0
-)
+def get_s3_client():
+    session = boto3.session.Session()
+    client = session.client(
+        's3',
+        region_name='nl-ams',
+        endpoint_url='https://s3.nl-ams.scw.cloud',
+        aws_access_key_id=os.getenv("S3_ACCESS_TOKEN"),
+        aws_secret_access_key=os.getenv("S3_SECRET_TOKEN")
+    )
+    return client
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -62,11 +67,30 @@ async def get_add(request: Request, show: Optional[str] = None):
 @app.post("/add/submit")
 async def post_add_submit(name: str = Form(...), category: str = Form(...), description: str = Form(...), image: UploadFile = File(...), link: str = Form(...), pricing: str = Form(...), email: str = Form(...)):
     try:
-        r = requests.post("https://api.imgbb.com/1/upload?key={0}".format(os.getenv("IMGBB_TOKEN")), data={"image": base64.b64encode(image.file.read())})
-        data = json.loads(r.content)["data"]
+        # Upload image
+        img_name = str(uuid.uuid4()) + "." + image.filename.rsplit(".", 1)[1]
+        img_content = image.file.read()
+
+        # Get S3 client
+        client = get_s3_client()
+        # Upload
+        client.put_object(
+            Body=img_content,
+            Bucket="cdn.whatdevsneed.com",
+            Key=f"img/{img_name}",
+            ContentType=image.content_type
+        )
+        # Set public
+        client.put_object_acl(
+            ACL='public-read',
+            Bucket="cdn.whatdevsneed.com",
+            Key=f"img/{img_name}"
+        )
+
+        # Add to database
         tools.insert({
             "name": name,
-            "img": data["url"],
+            "img": f"https://cdn.whatdevsneed.com/img/{img_name}",
             "category": category,
             "staffpick": False,
             "description": description,
@@ -75,10 +99,13 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
             "email": email,
             "show": False
         })
+
+        # Send push
         api_key = os.getenv("PUSH_TOKEN")
         title = "[wdn] New submission"
         body = f"{name} ({category})"
-        r2 = requests.post(f"https://push.techulus.com/api/v1/notify/{api_key}?title={title}&body={body}")
+        push_res = requests.post(f"https://push.techulus.com/api/v1/notify/{api_key}?title={title}&body={body}")
+
         return RedirectResponse(url="/add?show=success", status_code=status.HTTP_303_SEE_OTHER)
     except:
         return RedirectResponse(url="/add?show=error", status_code=status.HTTP_303_SEE_OTHER)
