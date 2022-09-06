@@ -7,9 +7,12 @@
         <loc>https://whatdevsneed.com/add.html</loc>
     </url>
     <url>
+        <loc>https://whatdevsneed.com/error.html</loc>
+    </url>
+    <url>
         <loc>https://whatdevsneed.com/help.html</loc>
     </url>
     <url>
-        <loc>https://whatdevsneed.com/index.html</loc>
+        <loc>https://whatdevsneed.com/</loc>
     </url>
 </urlset>

@@ -65,7 +65,7 @@ async def get_add(request: Request, show: Optional[str] = None):
     return templates.TemplateResponse("add.html", {"request": request, "alert": alert, "options": htmlgen.category_options()})
 
 @app.post("/add/submit")
-async def post_add_submit(name: str = Form(...), category: str = Form(...), description: str = Form(...), image: UploadFile = File(...), link: str = Form(...), pricing: str = Form(...), email: str = Form(...)):
+async def post_add_submit(name: str = Form(...), category: str = Form(...), description: str = Form(...), image: UploadFile = File(...), link: str = Form(...), pricing: str = Form(...)):
     try:
         # Upload image
         img_name = str(uuid.uuid4()) + "." + image.filename.rsplit(".", 1)[1]
@@ -96,7 +96,6 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
             "description": description,
             "link": link,
             "pricing": pricing,
-            "email": email,
             "show": False
         })
 
@@ -113,11 +112,11 @@ async def post_add_submit(name: str = Form(...), category: str = Form(...), desc
 @app.exception_handler(StarletteHTTPException)
 async def my_custom_exception_handler(request: Request, exc: StarletteHTTPException):
     if exc.status_code == 404:
-        return templates.TemplateResponse("error.html", {"request": request, "code": "404", "description": "The requested resource couldn't be found."})
+        return templates.TemplateResponse("error.html", {"request": request, "code": "404", "detail": "The requested resource couldn't be found."})
     elif exc.status_code == 500:
-        return templates.TemplateResponse("error.html", {"request": request, "title": "500", "description": exc.detail})
+        return templates.TemplateResponse("error.html", {"request": request, "code": "500", "detail": exc.detail})
     else:
-        return templates.TemplateResponse('error.html', {"request": request, "title": "Error", "description": exc.detail})
+        return templates.TemplateResponse('error.html', {"request": request, "code": "Error", "detail": exc.detail})
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=80)
+    uvicorn.run(app, host="localhost", port=8000)

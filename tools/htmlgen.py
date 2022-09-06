@@ -63,9 +63,15 @@ def tools_html(entries):
 
 def alert(id):
     if id == "add-success":
-        alert = """<div role="alert" class="alert alert-success" style="margin-bottom: 80px;max-width: 80%;margin-right: auto;margin-left: auto;"><span><strong>Success!</strong> Your tool is being reviewed. Check back later to see if it&#39;s added.</span></div>"""
+        alert = """
+            <div style="margin-bottom: 16px;padding: 10px;border-radius: 5px;background: rgba(25,135,84,0.1);color: var(--bs-green);border-width: 1px;border-style: solid;">
+                <p style="margin-bottom: 0px;"><strong>Done! </strong>Your tool was submitted. It may take a bit to get reviewed.</p>
+            </div>"""
     elif id == "add-error":
-        alert = """<div role="alert" class="alert alert-danger" style="margin-bottom: 80px;max-width: 80%;margin-right: auto;margin-left: auto;"><span><strong>Error!</strong> The tool couldn&#39;t be added.</span></div>"""
+        alert = """
+            <div style="margin-bottom: 16px;padding: 10px;border-radius: 5px;background: rgba(220,53,69,0.1);color: var(--bs-red);border-width: 1px;border-style: solid;">
+                <p style="margin-bottom: 0px;"><strong>Error! </strong>The tool couldn&#39;t be added.</p>
+            </div>"""
     return alert
 
 #def categories():
