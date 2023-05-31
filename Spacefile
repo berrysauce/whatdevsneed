@@ -1,0 +1,19 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: whatdevsneed
+    src: ./
+    engine: python3.9
+    dev: python main.py
+    primary: true
+    public: true
+    presets:
+      env:
+        - name: DETA_COLLECTION_KEY
+          description: Secret for Deta Base Collection
+        - name: PUSH_TOKEN
+          description: Secret for push notifications
+        - name: S3_ACCESS_TOKEN
+          description: S3 Bucket access token
+        - name: S3_SECRET_TOKEN
+          description: S3 Bucket secret

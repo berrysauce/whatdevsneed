@@ -17,7 +17,7 @@ import uuid
 load_dotenv()
 
 app = FastAPI()
-deta = Deta(os.getenv("DETA_TOKEN"))
+deta = Deta(os.getenv("DETA_COLLECTION_KEY"))
 tools = deta.Base("whatdevsneed-posts")
 templates = Jinja2Templates(directory="templates")
 

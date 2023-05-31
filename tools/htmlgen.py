@@ -1,13 +1,13 @@
-from dotenv.main import rewrite
+from dotenv import load_dotenv
 import jinja2
 from dotenv import load_dotenv
 from deta import Deta
-import os
 import urllib.parse
 import random
+import os
 
 load_dotenv()
-deta = Deta(os.getenv("DETA_TOKEN"))
+deta = Deta(os.getenv("DETA_COLLECTION_KEY"))
 toolsdb = deta.Base("whatdevsneed-posts")
 
 all_categories = ["AIs", "Analytics", "APIs", "Automation", "Backups", "Blockchain", "Blogging", "Collaboration", "Community",

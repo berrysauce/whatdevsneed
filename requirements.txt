@@ -7,3 +7,4 @@ python-multipart
 requests
 aiofiles
 sentry-sdk
+boto3
