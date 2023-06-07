@@ -15,6 +15,19 @@ all_categories = ["AIs", "Analytics", "APIs", "Automation", "Backups", "Blockcha
                   "Issue Tracking", "Documentation", "Learning", "Legal", "Libraries", "Licensing", "Localization", "Logging", "Messaging", 
                   "Monitoring", "Payments", "Performance", "Productivity", "Publishing", "Security", "Software", "Storage", "Terminals", "Testing", "Other"]
 
+free_span = """<span class="float-end" style="color: rgb(181,181,181);font-weight: 400;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" style="font-size: 14px;margin-bottom: 3px;margin-right: 5px;color: rgb(224,189,7);">
+        <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+        <path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"></path>
+    </svg>Free (<span data-bs-toggle="tooltip" data-bs-placement="right" style="color: rgb(224,189,7);text-decoration: underline;" title="Completely free, without paid plans">?</span>)</span>"""
+freemium_span = """<span class="float-end" style="color: rgb(181,181,181);font-weight: 400;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" style="font-size: 14px;margin-bottom: 3px;margin-right: 5px;color: rgb(224,189,7);">
+        <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+        <path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 64V448C362 448 448 362 448 256C448 149.1 362 64 256 64z"></path>
+    </svg>Freemium (<span data-bs-toggle="tooltip" data-bs-placement="right" style="color: rgb(224,189,7);text-decoration: underline;" title="Partly free, with free and paid plans">?</span>)</span>"""
+paid_span = """<span class="float-end" style="color: rgb(181,181,181);font-weight: 400;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" style="font-size: 14px;margin-bottom: 3px;margin-right: 5px;color: rgb(224,189,7);">
+        <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+        <path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256z"></path>
+    </svg>Paid (<span data-bs-toggle="tooltip" data-bs-placement="right" style="color: rgb(224,189,7);text-decoration: underline;" title="Only paid plans available">?</span>)</span>"""
+
 def categorylist():
     return all_categories
 
@@ -39,13 +52,23 @@ def tools_html(entries):
     else:
         random.shuffle(entries)
         tools_html = """"""
-        with open("templates/elements/tools.html", "r") as f:
+        with open("templates/elements/tool.html", "r") as f:
             tools_html_template = jinja2.Template(f.read())
         for entry in entries:
             if entry["staffpick"] is True:
-                staffpick_html = """<span style="font-size: 13.5px;margin-left: 10px; border-width: 2px; border-radius: 5px; border-color: #fdc80d; border-style: solid; padding: 3px; color: #c1990b;"><b>STAFF PICK</b></span>"""
+                staffpick_html = """<span style="padding: 4px 12px;font-size: 12px;border: 2px solid rgb(224,189,7);border-radius: 8px;margin-left: 8px;">Staff-Pick</span>"""
             else:
                 staffpick_html = """"""
+                
+            if entry["pricing"] == "Free":
+                pricing_html = free_span
+            elif entry["pricing"] == "Freemium":
+                pricing_html = freemium_span
+            elif entry["pricing"] == "Paid":
+                pricing_html = paid_span
+            else:
+                pricing_html = f"""<span>{entry["pricing"]}</span>"""
+                
             data = {
                 "imgurl": entry["img"],
                 "name": entry["name"],
@@ -55,7 +78,7 @@ def tools_html(entries):
                 "description": entry["description"],
                 "link": entry["link"]+"?ref=whatdevsneed",
                 "sharelink": "https://twitter.com/intent/tweet?url=whatdevsneed.com&text={0}".format("I just found " + entry["link"] + " on"),
-                "pricing": entry["pricing"]
+                "pricing": pricing_html
             }
             tools_html = tools_html + tools_html_template.render(data)
     return tools_html
@@ -64,13 +87,13 @@ def tools_html(entries):
 def alert(id):
     if id == "add-success":
         alert = """
-            <div style="margin-bottom: 16px;padding: 10px;border-radius: 5px;background: rgba(25,135,84,0.1);color: var(--bs-green);border-width: 1px;border-style: solid;">
-                <p style="margin-bottom: 0px;"><strong>Done! </strong>Your tool was submitted. It may take a bit to get reviewed.</p>
+            <div style="margin-bottom: 32px;padding: 20px;border: 2px solid rgb(68,176,30);border-radius: 12px;color: rgb(68,176,30);">
+                <p style="margin-bottom: 0px;"><span style="font-weight: 600;font-size: 18px;">Success!</span><br />Your tool was submitted for review. Check back later to see if it was added.</p>
             </div>"""
     elif id == "add-error":
         alert = """
-            <div style="margin-bottom: 16px;padding: 10px;border-radius: 5px;background: rgba(220,53,69,0.1);color: var(--bs-red);border-width: 1px;border-style: solid;">
-                <p style="margin-bottom: 0px;"><strong>Error! </strong>The tool couldn&#39;t be added.</p>
+            <div style="margin-bottom: 32px;padding: 20px;border-radius: 12px;color: rgb(200,31,72);border: 2px solid rgb(200,31,72);">
+                <p style="margin-bottom: 0px;"><span style="font-weight: 600;font-size: 18px;">Error!</span><br />Your tool could not be submitted. Please try again later.</p>
             </div>"""
     return alert
 

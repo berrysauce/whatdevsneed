@@ -46,14 +46,6 @@ async def get_root(request: Request, search: Optional[str] = None):
 async def get_category(request: Request, tag: str):
     return templates.TemplateResponse("index.html", {"request": request, "tools": htmlgen.tools(tag)})
 
-@app.get("/about", response_class=HTMLResponse)
-async def get_about(request: Request):
-    return templates.TemplateResponse("about.html", {"request": request})
-
-@app.get("/help", response_class=HTMLResponse)
-async def get_about(request: Request):
-    return templates.TemplateResponse("help.html", {"request": request})
-
 @app.get("/add", response_class=HTMLResponse)
 async def get_add(request: Request, show: Optional[str] = None):
     if show == "success":
