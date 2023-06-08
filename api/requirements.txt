@@ -1,0 +1,8 @@
+uvicorn
+fastapi
+deta
+python-dotenv
+python-multipart
+requests
+aiofiles
+boto3

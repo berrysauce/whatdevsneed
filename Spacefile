@@ -2,12 +2,17 @@
 v: 0
 icon: ./icon.png
 micros:
-  - name: whatdevsneed
-    src: ./
-    engine: python3.9
-    dev: python main.py
+  - name: whatdevsneed-app
+    src: ./app
+    engine: svelte-kit
+    dev: npm run dev -- --open
     primary: true
     public: true
+  - name: whatdevsneed-api
+    src: ./api
+    path: api
+    engine: python3.9
+    dev: python main.py
     presets:
       env:
         - name: DETA_COLLECTION_KEY
@@ -18,3 +23,6 @@ micros:
           description: S3 Bucket access token
         - name: S3_SECRET_TOKEN
           description: S3 Bucket secret
+    public_routes:
+      - "/get/*"
+      - "/post/*"
